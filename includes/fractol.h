@@ -82,5 +82,5 @@ void				runwhile_instruction(void);
 int					exit_error(char *msg, t_fractol *f, int exit_code);
 
 //____________________  WINDOW FUNCTIONS  ____________________
-int					close_window(void *param);
+int					close_window(t_fractol *f);
 #endif

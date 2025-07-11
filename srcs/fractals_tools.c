@@ -23,5 +23,11 @@ void put_px_to_img(t_fractol *f, int x, int y, int color)
 	char *dst;
 	
 	dst = f->img_data + (y * f->line_len + x * (f->bits / 8));
+
+
+	// int offset =  (y * f->line_len + x * (f->bits / 8));
+
+	// f->img_data[offset] = color;
 	*(unsigned int*)dst = color;
 }
+

@@ -51,7 +51,7 @@ int get_color(int iterations, int max_iter, t_fractol *f)
 	g = (theme[1] + ((f->rm_color >> 6) & 0x3F)) % 256;
 	b = (theme[2] + ((f->rm_color >> 12) & 0x3F)) % 256;
 
-	rgb = ((f->rm_color >> 18) % 256 | r << 16) | (g << 8) | b;
+	rgb = (r << 16) | (g << 8) | b;
 	return (rgb);
 }
 

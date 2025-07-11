@@ -19,6 +19,7 @@
  *			→ call render_mandelbrot
  *
  * if set == J or j
+ *		get one extra param to select which j set we'll get
  *			→ call render_julia
  * else
  *			→ call help function

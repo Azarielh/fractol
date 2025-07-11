@@ -12,9 +12,8 @@
 
 #include "../includes/fractol.h"
 
-int	close_window(void *param)
+int	close_window(t_fractol *f)
 {
-    (void)param;
-    exit(0);
-    return (0);
+	clean_exit(f);
+	return (0);
 }

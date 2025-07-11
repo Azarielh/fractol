@@ -24,19 +24,19 @@ void	runwhile_instruction(void)
 	f.img_data = mlx_get_data_addr(f.img_ptr, &f.bits, 
 										&f.line_len, &f.endian);
 	f.img_data = mlx_get_data_addr(f.img_ptr, &f.bits, &f.line_len, &f.endian);
-    mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 20, color, "FRACTOL - Instructions:");
-    mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 20, color, "FRACTOL - Instructions:");
-    mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 20, color, "FRACTOL - Instructions:");
-    mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 40, color, "Mouse wheel: Zoom in/out");
-    mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 60, color, "Arrow keys: Move view");
-    mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 80, color, "ESC: Exit");
-    mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 100, color, "Space: Change colors");
+	mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 20, color, "┌─────────────┐");
+	mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 20, color, "|   FRACTOL   |");
+	mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 20, color, "└─────────────┘");
+	mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 40, color, "Mouse wheel: Zoom in/out");
+	mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 60, color, "Arrow keys: Move view");
+	mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 80, color, "ESC: Exit");
+	mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 100, color, "Space: Change colors");
 
-    mlx_key_hook(f.win_ptr, keys_handler, &f);
-    mlx_mouse_hook(f.win_ptr, mouse_handler, &f);
-    mlx_hook(f.win_ptr, DestroyNotify, 0, close_window, &f);
+	mlx_key_hook(f.win_ptr, keys_handler, &f);
+	mlx_mouse_hook(f.win_ptr, mouse_handler, &f);
+	mlx_hook(f.win_ptr, DestroyNotify, 0, close_window, &f);
 	// mlx_hook(f.win_ptr, 22, 0, resize_handler, &f);
-    mlx_loop(f.mlx_ptr);
+	mlx_loop(f.mlx_ptr);
 }
 
 void	param_instructions(void)
@@ -50,5 +50,7 @@ void	param_instructions(void)
 	ft_putendl_fd(" For Mandelbrot :\n     ./fractol [m || mandelbrot]\n", 1);
 	ft_putendl_fd("───────────────────────────────────────\n", 1);
 	ft_putendl_fd(" For Julia :\n     ./fractol [j || julia]\n", 1);
+	ft_putendl_fd("\nFor any sets of your choice,", 1);
+	ft_putendl_fd("You can choose the color theme you want to start with", 1);
 }
 
