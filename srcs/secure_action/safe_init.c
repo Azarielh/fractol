@@ -12,14 +12,14 @@
 
 #include "fractol.h"
 
-void	*safe_init(void)
+void	*safe_init(t_fractol *f)
 {
 	void	*init;
 
 	init = mlx_init();
 	if (init == 0)
 	{
-		exit_error("mlx_init failed", 1);
+		exit_error("mlx_init failed", NULL, 1);
 		return (init);
 	}
 	return (init);

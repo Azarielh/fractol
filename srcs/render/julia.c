@@ -37,8 +37,8 @@ void render_julia(t_fractol *f)
     int iterations;
     int color;
 	
-    ft_random_8bits(f, 0);
     y = 0;
+
     while (y < f->height)
     {
         x = 0;

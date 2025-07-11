@@ -27,6 +27,8 @@ void	choose_fractal(t_fractol *f)
 {
 	if (ft_strcmp_2(f->set, "mandelbrot", "m") == 0)
 		render_mandelbrot(f);
-	if (ft_strcmp_2(f->set, "julia", "j") == 0)
+	else if (ft_strcmp_2(f->set, "julia", "j") == 0)
 		render_julia(f);
+	else
+		param_instructions();
 }

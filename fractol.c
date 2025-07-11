@@ -17,8 +17,7 @@ void init_fractol(t_fractol *f, char **set)
 	if (!set[2])
 		f->theme = ft_strdup("winter");//needs to be free
 	else
-		f->theme = ft_strdup(set[2]);//needs to be free
-	f->rm_color = ft_random_8bits(f);
+		f->theme = ft_strdup(set[2]);//needs to be free 
 	f->width = 800;
 	f->height = 800;
 	f->x_min = -2.5;
@@ -26,11 +25,16 @@ void init_fractol(t_fractol *f, char **set)
 	f->y_min = -1.25;
 	f->y_max = 1.25;
 	f->max_iter = 100;
-	f->mlx_ptr = safe_init();
-	f->win_ptr = safe_win_opener(f->mlx_ptr, f->width, f->height, "Fractol");
+	f->rm_color = 12345;
+	f->background_color = 0x000000;
+	f->mlx_ptr = safe_init(f);
+	f->win_ptr = safe_win_opener(f, "Fractol");
 	f->img_ptr = mlx_new_image(f->mlx_ptr, f->width, f->height);
 	f->img_data = mlx_get_data_addr(f->img_ptr, &f->bits, 
 										&f->line_len, &f->endian);
+	printf("Theme: %s\n", f->theme);
+	printf("Background: 0x%x\n", f->background_color);
+	ft_printf("bits = %d\n", f->bits);
 }
 
 int main(int argc, char **args)

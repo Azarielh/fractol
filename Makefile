@@ -39,6 +39,9 @@ RENDERS = 		srcs/fractals_tools.c\
 				srcs/render/mandelbrot.c\
 				srcs/render/julia.c
 
+COLORS =		srcs/colors/clr_initialization.c\
+				srcs/colors/clr_tools.c\
+
 SECURE_ACTION = srcs/secure_action/safe_init.c\
 				srcs/secure_action/safe_win_opener.c
 
@@ -46,7 +49,7 @@ OUTPUT = 		srcs/output/exit_error.c\
 				srcs/output/instructions.c\
 
 # Define the source files
-SRCS = $(MAIN) $(OUTPUT) $(SECURE_ACTION) $(HANDLERS) $(RENDERS)
+SRCS = $(MAIN) $(OUTPUT) $(SECURE_ACTION) $(HANDLERS) $(RENDERS) $(COLORS)
 
 # _____________________  DEFINE OBJECT DESTINATION  __________________________
 

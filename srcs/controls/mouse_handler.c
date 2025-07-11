@@ -34,6 +34,7 @@ void	zoom_at_point(int scroll, int x, int y, t_fractol *f)
 	}
 	mlx_destroy_image(f->mlx_ptr, f->img_ptr);
 	f->img_ptr = mlx_new_image(f->mlx_ptr, f->width, f->height);
+	f->img_data = mlx_get_data_addr(f->img_ptr, &f->bits, &f->line_len, &f->endian);
 
 	choose_fractal(f);
 }

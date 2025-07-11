@@ -12,14 +12,14 @@
 
 #include "../../includes/fractol.h"
 
-void	*safe_win_opener(void *mlx_ptr, int size_x, int size_y, char *title)
+void	*safe_win_opener(t_fractol *f, char *title)
 {
 	void	*win_ptr;
-
-	win_ptr = mlx_new_window(mlx_ptr, size_x, size_y, title);
+	
+	win_ptr = mlx_new_window(f->mlx_ptr, f->width, f->height, title);
 	if (win_ptr == 0)
 	{
-		exit_error("Failed to open a new window", 2);
+		exit_error("Failed to open a new window", f, 2);
 		return (win_ptr);
 	}
 	return (win_ptr);

@@ -40,15 +40,21 @@ typedef struct s_fractol
 	double			y_min;
 	double			y_max;
 	int				max_iter;
-	unsigned int	rm_color;
+	int				rm_color;
+	int				background_color;
 // Window's Dimension
 	int				width;
 	int				height;
 }					t_fractol;
 
+typedef struct s_theme
+{
+	char			theme[6];
+	int				background[12];
+}					t_theme;
 //____________________  SECURE FUNCTIONS  ____________________
-void				*safe_init(void);
-void				*safe_win_opener(void *mlx_ptr, int size_x, int size_y, char *title);
+void				*safe_init(t_fractol *f);
+void				*safe_win_opener(t_fractol *f, char *title);
 
 //____________________  CONTROLS FUNCTIONS  ____________________
 int					mouse_handler(int button, int x, int y, void *param);
@@ -59,11 +65,15 @@ void				resize_handler(t_fractol *f);
 //____________________  UTILITY FUNCTIONS  ____________________
 void				pixel_to_complex(t_fractol *f, int x, int y, double *real, double *imag);
 void				put_px_to_img(t_fractol *f, int x, int y, int color);
-unsigned int		ft_random_8bits(t_fractol *f, int max);
+void				cycle_background_clr(t_fractol *f);
 
 //____________________  COLOR FUNCTIONS  ____________________
 int					*get_theme(char *theme);
 int					get_color(int iterations, int max_iter, t_fractol *f);
+void				init_themes(char *themes[4]);
+void				init_background(int clr[8]);
+void				init_color_palettes(int winter[3], int summer[3], int sea[3], 
+											int purple[3], int *init);
 
 //____________________  FRACTAL FUNCTIONS  ____________________
 void				init_fractol(t_fractol *f, char **set);

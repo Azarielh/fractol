@@ -1,1 +1,18 @@
 *.o
+
+# int ft_random_color(t_fractol *f)
+# {
+# 	int r, g, b;
+	
+# 	// Génère une couleur aléatoire pour chaque composant RGB
+# 	f->rm_color = (f->rm_color * 1103515245 + 12345) & 0x7FFFFFFF;
+# 	r = (f->rm_color >> 16) & 0xFF;
+	
+# 	f->rm_color = (f->rm_color * 1103515245 + 12345) & 0x7FFFFFFF;
+# 	g = (f->rm_color >> 8) & 0xFF;
+	
+# 	f->rm_color = (f->rm_color * 1103515245 + 12345) & 0x7FFFFFFF;
+# 	b = f->rm_color & 0xFF;
+	
+# 	return ((r << 16) | (g << 8) | b);
+# }

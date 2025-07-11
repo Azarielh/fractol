@@ -40,8 +40,7 @@ void render_mandelbrot(t_fractol *f)
 	double imag;
     int iterations;
     int color;
-	ft_printf("mandel is here\n");
-	ft_random_8bits(f, 0);
+
     y = 0;
     while (y < f->height)
     {

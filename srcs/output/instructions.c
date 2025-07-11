@@ -16,13 +16,13 @@ void	runwhile_instruction(void)
 {
 	t_fractol f;
     int color = 0xFFFFFF;  // Blanc
-    
-	f.mlx_ptr = safe_init();
-	f.win_ptr = safe_win_opener(f.mlx_ptr, 500, 500, "Fractol");
+    f.width = 500;
+	f.height = 500;
+	f.mlx_ptr = safe_init(&f);
+	f.win_ptr = safe_win_opener(&f,"Fractol");
 	f.img_ptr = mlx_new_image(f.mlx_ptr, 500, 500);
 	f.img_data = mlx_get_data_addr(f.img_ptr, &f.bits, 
 										&f.line_len, &f.endian);
-
 	f.img_data = mlx_get_data_addr(f.img_ptr, &f.bits, &f.line_len, &f.endian);
     mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 20, color, "FRACTOL - Instructions:");
     mlx_string_put(f.mlx_ptr, f.win_ptr, 10, 20, color, "FRACTOL - Instructions:");

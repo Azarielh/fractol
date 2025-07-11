@@ -20,9 +20,12 @@ int	exit_error(char *msg, t_fractol *f, int exit_code)
 		param_instructions();
 	else
 	{
-		mlx_destroy_image(f->mlx_ptr, f->img_ptr);
-		mlx_destroy_window(f->mlx_ptr, f->win_ptr);
-		mlx_destroy_display(f->mlx_ptr);
+		if (f->img_ptr)
+			mlx_destroy_image(f->mlx_ptr, f->img_ptr);
+		if (f->win_ptr)
+			mlx_destroy_window(f->mlx_ptr, f->win_ptr);
+		if (f->mlx_ptr)
+			mlx_destroy_display(f->mlx_ptr);
 		free(f->mlx_ptr);
 	}
 	exit(exit_code);
