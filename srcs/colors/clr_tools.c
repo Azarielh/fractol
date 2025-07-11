@@ -44,7 +44,7 @@ int get_color(int iterations, int max_iter, t_fractol *f)
 	theme = get_theme(f->theme);
 	if (iterations == max_iter)
 		return (0x000000);	
-	if (iterations < max_iter * 0.3)
+	if (iterations < max_iter * 0.1)
 		return (f->background_color);
 	f->rm_color = (f->rm_color * 1103515245 + 12345) & 0x7FFFFFFF;
 	r = (theme[0] + (f->rm_color & 0x3F)) % 256;
@@ -64,7 +64,7 @@ void cycle_background_color(t_fractol *f)
 	int			clr_len;
 
 	init_themes(themes);
-	init_backgound_clr(clr);
+	init_background(clr);
 	clr_len = sizeof(clr) / sizeof(clr[0]);
 	color_index = (color_index + 1) % clr_len;
 	if (color_index % 2 == 0)

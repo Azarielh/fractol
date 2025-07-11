@@ -20,16 +20,16 @@ void	init_themes(char *themes[4])
 	themes[3] = "spring";
 }
 
-void	init_backgound_clr(int clr[8])
+void	init_background(int clr[8])
 {
-	clr[0] = 0x0f1419;
-	clr[1] = 0x2c2c54;
-	clr[2] = 0x3d3d10;
-	clr[3] = 0x4a1810;
-	clr[4] = 0x3d2818;
-	clr[5] = 0x4a3020;
-	clr[6] = 0x1f3d1f;
-	clr[7] = 0x0d2d1a;
+	clr[0] = 0x050510;  // Winter - Bleu nuit très profond
+	clr[1] = 0x080815;  // Winter - Bleu nuit avec nuance
+	clr[2] = 0x100805;  // Summer - Brun terre ultra sombre  
+	clr[3] = 0x150503;  // Summer - Rouge terre profond
+	clr[4] = 0x100705;  // Autumn - Brun automne profond
+	clr[5] = 0x150a05;  // Autumn - Ocre ultra sombre
+	clr[6] = 0x051005;  // Spring - Vert forêt profond
+	clr[7] = 0x030a08;  // Spring - Vert émeraude ultra sombre
 }
 
 void init_color_palettes(int winter[3], int summer[3], int autumn[3], 
