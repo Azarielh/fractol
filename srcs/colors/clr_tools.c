@@ -14,23 +14,23 @@
 
 int *get_theme(char *theme)
 {
-	static int	winter[3];
-	static int	summer[3];
-	static int	autumn[3];
-	static int	spring[3];
+	static int	theme1[3];
+	static int	theme2[3];
+	static int	theme3[3];
+	static int	theme4[3];
 	static int	init;
 
 	if (!init)
-		init_color_palettes(winter, summer, autumn, spring, &init);
-	if (ft_strcmp(theme, "winter") == 0)
-		return (winter);
-	else if (ft_strcmp(theme, "summer") == 0)
-		return (summer);
-	else if (ft_strcmp(theme, "autumn") == 0)
-		return (autumn);
-	else if (ft_strcmp(theme, "spring") == 0)
-		return (spring);
-	return (summer);
+		init_color_palettes(theme1, theme2, theme3, theme4, &init);
+	if (ft_strcmp(theme, "theme1") == 0)
+		return (theme1);
+	else if (ft_strcmp(theme, "theme2") == 0)
+		return (theme2);
+	else if (ft_strcmp(theme, "theme3") == 0)
+		return (theme3);
+	else if (ft_strcmp(theme, "theme4") == 0)
+		return (theme4);
+	return (theme1);
 }
 
 int get_color(int iterations, int max_iter, t_fractol *f)
@@ -43,7 +43,7 @@ int get_color(int iterations, int max_iter, t_fractol *f)
 
 	theme = get_theme(f->theme);
 	if (iterations == max_iter)
-		return (0x000000);	
+		return (f->background_color);
 	if (iterations < max_iter * 0.1)
 		return (f->background_color);
 	f->rm_color = (f->rm_color * 1103515245 + 12345) & 0x7FFFFFFF;
@@ -55,7 +55,7 @@ int get_color(int iterations, int max_iter, t_fractol *f)
 	return (rgb);
 }
 
-void cycle_background_color(t_fractol *f)
+void switch_color(t_fractol *f)
 {
 	static int	color_index;
 	static int	clr[8];

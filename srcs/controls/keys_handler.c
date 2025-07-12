@@ -19,8 +19,6 @@ int keys_handler(int key, void *param)
 	if (key == ESC)
 		close_window(param);
 	else if (key == SPACE)
-		cycle_background_color(f);
-	// if(key == SPACE)
-	// 	switch_theme();
+		switch_color(f);
 	return (0);
 }

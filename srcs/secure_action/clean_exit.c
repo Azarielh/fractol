@@ -21,6 +21,7 @@ void	clean_exit(t_fractol *f)
 	if (f->mlx_ptr)
 	{
 		mlx_destroy_display(f->mlx_ptr);
+		free(f->theme);
 		free(f->mlx_ptr);
 	}
 	exit(0);

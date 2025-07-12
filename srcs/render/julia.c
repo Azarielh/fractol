@@ -29,7 +29,7 @@ static int julia_iteration(double z_real, double z_imag, double c_real, double c
 	return (i);
 }
 
-void render_julia(t_fractol *f)
+void render_julia(t_fractol *f, double c_real, double c_imag)
 {
     int x, y;
     double real;
@@ -45,7 +45,7 @@ void render_julia(t_fractol *f)
         while (x < f->width)
         {
             pixel_to_complex(f, x, y, &real, &imag);
-            iterations = julia_iteration(real, imag, -0.7, 0.27015, f->max_iter);
+            iterations = julia_iteration(real, imag, c_real, c_imag, f->max_iter);
             color = get_color(iterations, f->max_iter, f);
             put_px_to_img(f, x, y, color);
             x++;

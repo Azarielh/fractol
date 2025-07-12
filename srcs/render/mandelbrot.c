@@ -57,3 +57,4 @@ void render_mandelbrot(t_fractol *f)
     }
     mlx_put_image_to_window(f->mlx_ptr, f->win_ptr, f->img_ptr, 0, 0);
 }
+

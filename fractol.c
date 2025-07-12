@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 
 #include "includes/fractol.h"
-void init_fractol(t_fractol *f, char **set)
+
+void init_fractol(t_fractol *f, char **args)
 {
-	f->set = ft_tolower_str(set[1]);
-	if (!set[2])
-		f->theme = ft_strdup("winter");//needs to be free
-	else
-		f->theme = ft_strdup(set[2]);//needs to be free 
+	ft_tolower_str(args[1]);
+	ft_printf("%s\n", args[1]);
+
+	pars_args(args, f);
 	f->width = 800;
 	f->height = 800;
 	f->x_min = -2.5;
@@ -32,9 +32,6 @@ void init_fractol(t_fractol *f, char **set)
 	f->img_ptr = mlx_new_image(f->mlx_ptr, f->width, f->height);
 	f->img_data = mlx_get_data_addr(f->img_ptr, &f->bits, 
 										&f->line_len, &f->endian);
-	printf("Theme: %s\n", f->theme);
-	printf("Background: 0x%x\n", f->background_color);
-	ft_printf("bits = %d\n", f->bits);
 }
 
 int main(int argc, char **args)
@@ -42,15 +39,14 @@ int main(int argc, char **args)
     t_fractol f;
 	
 	if(argc < 2)
-		exit_error("Please, read the following instructions >>\n", &f, 1);
+		exit_error("Please, read the following instructions >>\n", 1);
+	runwhile_instruction();
 	init_fractol(&f, args);
 	choose_fractal(&f);
-    //render_mandelbrot(&fractol);
-    // render_julia(&fractol);
-    mlx_key_hook(f.win_ptr, keys_handler, &f);
-    mlx_mouse_hook(f.win_ptr, mouse_handler, &f);
-    mlx_hook(f.win_ptr, DestroyNotify, 0, close_window, &f);
-    
-    mlx_loop(f.mlx_ptr);
-    return (0);
+	mlx_key_hook(f.win_ptr, keys_handler, &f);
+	mlx_mouse_hook(f.win_ptr, mouse_handler, &f);
+	mlx_hook(f.win_ptr, DestroyNotify, 0, close_window, &f);
+
+	mlx_loop(f.mlx_ptr);
+	return (0);
 }

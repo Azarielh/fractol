@@ -43,13 +43,14 @@ COLORS =		srcs/colors/clr_initialization.c\
 				srcs/colors/clr_tools.c\
 
 SECURE_ACTION = srcs/secure_action/safe_init.c\
-				srcs/secure_action/safe_win_opener.c
+				srcs/secure_action/safe_win_opener.c\
+				srcs/secure_action/clean_exit.c
 
 OUTPUT = 		srcs/output/exit_error.c\
 				srcs/output/instructions.c\
 
 # Define the source files
-SRCS = $(MAIN) $(OUTPUT) $(SECURE_ACTION) $(HANDLERS) $(RENDERS) $(COLORS)
+SRCS = $(MAIN) $(OUTPUT) $(SECURE_ACTION) $(HANDLERS) $(RENDERS) $(COLORS) srcs/pars.c\
 
 # _____________________  DEFINE OBJECT DESTINATION  __________________________
 

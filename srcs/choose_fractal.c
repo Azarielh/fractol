@@ -12,24 +12,16 @@
 
 #include "../includes/fractol.h"
 
-/**
- * get the 'set' parametter from s_fractol struct found int the header.
- * 
- * if set == M or m
- *			→ call render_mandelbrot
- *
- * if set == J or j
- *		get one extra param to select which j set we'll get
- *			→ call render_julia
- * else
- *			→ call help function
- */
 void	choose_fractal(t_fractol *f)
 {
 	if (ft_strcmp_2(f->set, "mandelbrot", "m") == 0)
 		render_mandelbrot(f);
-	else if (ft_strcmp_2(f->set, "julia", "j") == 0)
-		render_julia(f);
-	else
-		param_instructions();
+	else if (ft_strcmp_2(f->set, "butterfly", "b") == 0)
+		render_julia(f, -0.75, 0.11);
+	else if (ft_strcmp_2(f->set, "vortex", "v") == 0)
+		render_julia(f, -0.8, 0.156);
+	else if (ft_strcmp_2(f->set, "dragon de douady", "dd") == 0)
+		render_julia(f, -0.7, 0.27015);
+	else if (ft_strcmp_2(f->set, "lightning", "l") == 0)
+		render_julia(f, -0.1, 0.651);
 }

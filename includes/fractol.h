@@ -18,11 +18,6 @@
 # include "controls.h"
 # include "mlx.h"
 
-/**
- * x_min, x_max, y_min,  y_max :
- * ↪ définissent quelle portion du plan mathématique on regarde.
- * y_min,  y_max
- */
 typedef struct s_fractol
 {
 	char			*set;
@@ -50,6 +45,7 @@ typedef struct s_fractol
 //____________________  SECURE FUNCTIONS  ____________________
 void				*safe_init(t_fractol *f);
 void				*safe_win_opener(t_fractol *f, char *title);
+void				clean_exit(t_fractol *f);
 
 //____________________  CONTROLS FUNCTIONS  ____________________
 int					mouse_handler(int button, int x, int y, void *param);
@@ -66,20 +62,22 @@ int					*get_theme(char *theme);
 int					get_color(int iterations, int max_iter, t_fractol *f);
 void				init_themes(char *themes[4]);
 void				init_background(int clr[8]);
-void				init_color_palettes(int winter[3], int summer[3], int autumn[3], 
-											int spring[3], int *init);
-void				cycle_background_color(t_fractol *f);
+void				init_color_palettes(int theme1[3], int theme2[3], int theme3[3], 
+											int theme4[3], int *init);
+void				switch_color(t_fractol *f);
 
 //____________________  FRACTAL FUNCTIONS  ____________________
-void				init_fractol(t_fractol *f, char **set);
+void				init_fractol(t_fractol *f, char **args);
 void				choose_fractal(t_fractol *f);
 void				render_mandelbrot(t_fractol *f);
-void				render_julia(t_fractol *f);
+void				render_julia(t_fractol *f, double c_real, double c_imag);
 
 //____________________  OUTPUT FUNCTIONS  ____________________
-void				param_instructions(void);
+void				print_instructions(void);
 void				runwhile_instruction(void);
-int					exit_error(char *msg, t_fractol *f, int exit_code);
+int					exit_error(char *msg, int exit_code);
+int					exit_n_free(char *msg, t_fractol *f, int exit_code);
+void					pars_args(char **args, t_fractol *f);
 
 //____________________  WINDOW FUNCTIONS  ____________________
 int					close_window(t_fractol *f);

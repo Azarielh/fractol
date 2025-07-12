@@ -147,7 +147,7 @@
  int ft_tolower(int c);
  
  /**
-  * @brief Converts the given every upppercase character of the given string to its lowercase equivalent.
+  * @brief Converts every upppercase character of the given string to its lowercase equivalent.
   *
   * @param str The string to convert.
   *
@@ -481,7 +481,10 @@
  int ft_strcmp(const char *str1, const char *str2);
  
   /**
-  * @brief Compares characters of two string. If the first comparison turns wrong, it compares with the thrisd given string called abr for abrevation.
+  * @brief Compares characters of two string. If the first comparison turns wrong,
+  *         it compares with the thrisd given string called abr for abrevation.
+  *         Crontrary to its cousins ft_strcmp & ft_strncmp, ft_strcmp_2 is case insensitve
+  *			because it calls ft_to_lower_str beffore engaging any comparison.
   *
   * @param str1 The first string to compare.
   * @param str2 The second string to compare.
@@ -489,7 +492,7 @@
   *
   * @return 0 if a match is found between str1 and one of the the other given strings.
   */
- int ft_strcmp_2(const char *str1, const char *str2, const char *abr);
+ int ft_strcmp_2(char *str1, char *str2, char *abr);
 
  /**
   * @brief Calculates the length of a string.
