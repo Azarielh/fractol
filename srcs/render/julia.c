@@ -12,18 +12,24 @@
 
 #include "../../includes/fractol.h"
 
-static int julia_iteration(double z_real, double z_imag, double c_real, double c_imag, int max_iter)
+typedef struct s_julia
+{
+	double	z_real;
+	double	z_imag;
+}	t_julia;
+
+static int julia_iteration(t_julia j, double c_real, double c_imag, t_fractol *f)
 {
 	double	temp;
 	int		i;
 
 	i = -1;
-	while (++i < max_iter)
+	while (++i < f->max_iter)
 	{
-		temp = z_real * z_real - z_imag * z_imag + c_real;
-		z_imag = 2 * z_real * z_imag + c_imag;
-		z_real = temp;
-		if (z_real * z_real + z_imag * z_imag > 4.0)
+		temp = j.z_real * j.z_real - j.z_imag * j.z_imag + c_real;
+		j.z_imag = 2 * j.z_real * j.z_imag + c_imag;
+		j.z_real = temp;
+		if (j.z_real * j.z_real + j.z_imag * j.z_imag > 4.0)
 			return (i);
 	}
 	return (i);
@@ -31,11 +37,11 @@ static int julia_iteration(double z_real, double z_imag, double c_real, double c
 
 void render_julia(t_fractol *f, double c_real, double c_imag)
 {
-    int x, y;
-    double real;
-	double imag;
-    int iterations;
-    int color;
+	int		x;
+	int		y;
+	int		iterations;
+	int		color;
+	t_julia	j;
 	
     y = 0;
 
@@ -44,12 +50,12 @@ void render_julia(t_fractol *f, double c_real, double c_imag)
         x = 0;
         while (x < f->width)
         {
-            real = pixel_to_real(f, x);
-            imag = pixel_to_imag(f, y);
-            iterations = julia_iteration(real, imag, c_real, c_imag, f->max_iter);
-            color = get_color(iterations, f->max_iter);
-            put_px_to_img(f, x, y, color);
-            x++;
+			j.z_real = pixel_to_real(f, x);
+			j.z_imag = pixel_to_imag(f, y);
+			iterations = julia_iteration(j, c_real, c_imag, f);
+			color = get_color(iterations, f->max_iter);
+			put_px_to_img(f, x, y, color);
+			x++;
         }
         y++;
     }

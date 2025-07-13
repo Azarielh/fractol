@@ -1,0 +1,5 @@
+.objs/srcs/pars.o: srcs/pars.c srcs/../includes/fractol.h \
+ srcs/../includes/../libft/libft.h minilibx-linux/mlx.h
+srcs/../includes/fractol.h:
+srcs/../includes/../libft/libft.h:
+minilibx-linux/mlx.h:
