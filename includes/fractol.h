@@ -18,6 +18,7 @@
 # include "mlx.h"
 
 # define ESC			65307
+# define SPACE			32
 # define SCROLL_UP		4
 # define SCROLL_DOWN	5
 # define DestroyNotify	17
@@ -45,11 +46,13 @@ typedef struct s_fractol
 	int				height;
 }					t_fractol;
 
-typedef struct s_julia
+typedef struct s_draw
 {
 	double			z_real;
 	double			z_imag;
-}					t_julia;
+	double			c_real;
+	double			c_imag;
+}					t_draw;
 
 //____________________  SECURE FUNCTIONS  ____________________
 void				*safe_init();

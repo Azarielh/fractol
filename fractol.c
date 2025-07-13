@@ -32,8 +32,8 @@ void init_fractol(t_fractol *f, char **args)
 
 int main(int argc, char **args)
 {
-    t_fractol f;
-	
+    t_fractol	f;
+
 	if(argc < 2)
 		exit_error("Please, read the following instructions >>\n", 1);
 	runwhile_instruction();

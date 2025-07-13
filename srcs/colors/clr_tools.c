@@ -10,22 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fractol.h"
+#include "fractol.h"
 
 int get_color(int iterations, int max_iter)
 {
-	int rgb;
 	int r;
 	int g;
 	int b;
+	static int	alpha;
 
 	if (iterations == max_iter)
-		return (0x000000);
+	{
+		alpha = 255;
+		return ((alpha << 24) | (150 << 16) | (3 << 8) | 255);
+	}
+	alpha -= 20;
+	r = (iterations * 2);
+	g = (iterations * 1);
+	b = (iterations * 40);
 	
-	r = (iterations * 9) % 256;
-	g = (iterations * 15) % 256;
-	b = (iterations * 25) % 256;
-
-	rgb = (r << 16) | (g << 8) | b;
-	return (rgb);
+	return ((alpha << 24) | (r << 16) | (g << 8) | b);
 }

@@ -6,11 +6,11 @@
 /*   By: jlacaze <jlacaze-@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 16:15:52 by jlacaze           #+#    #+#             */
-/*   Updated: 2025/07/12 16:15:52 by jlacaze          ###   ########.fr       */
+/*   Updated: 2025/07/13 19:37:32 by jlacaze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "fractol.h"
 
 void	pars_args(char **args, t_fractol *f)// second param for julia must be : (b || butterfly) (v || vortex)
 {

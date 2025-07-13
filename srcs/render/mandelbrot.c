@@ -30,32 +30,30 @@ static int	mandelbrot_iteration(double c_real, double c_imag, int max_iter)
 		if (z_real * z_real + z_imag * z_imag > 4.0)
 			return (i);
 	}
-	return (i);
+	return (get_color(i, max_iter));
 }
 
 void render_mandelbrot(t_fractol *f)
 {
-    int x, y;
-    double real;
+	int x, y;
+	double real;
 	double imag;
-    int iterations;
-    int color;
+	int color;
 
-    y = 0;
-    while (y < f->height)
-    {
-        x = 0;
-        while (x < f->width)
-        {
-            real = pixel_to_real(f, x);
-            imag = pixel_to_imag(f, y);
-            iterations = mandelbrot_iteration(real, imag, f->max_iter);
-            color = get_color(iterations, f->max_iter);
-            put_px_to_img(f, x, y, color);
-            x++;
-        }
-        y++;
-    }
-    mlx_put_image_to_window(f->mlx_ptr, f->win_ptr, f->img_ptr, 0, 0);
+	y = 0;
+	while (y < f->height)
+	{
+		x = 0;
+		while (x < f->width)
+		{
+			real = pixel_to_real(f, x);
+			imag = pixel_to_imag(f, y);
+			color = mandelbrot_iteration(real, imag, f->max_iter);
+			put_px_to_img(f, x, y, color);
+			x++;
+		}
+		y++;
+	}
+	mlx_put_image_to_window(f->mlx_ptr, f->win_ptr, f->img_ptr, 0, 0);
 }
 

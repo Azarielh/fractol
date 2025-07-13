@@ -1,6 +1,6 @@
 # Compilation Settings
 CC =			cc
-CFLAGS =		-Wall -Wextra -MMD -MP -I./libft -I./minilibx-linux
+CFLAGS =		-Wall -Wextra -Werror -MMD -MP -Wpedantic -I./libft -I./minilibx-linux
 MLX_FLAGS =		-lmlx -lXext -lX11 -lm
 
 NAME =			fractol
@@ -30,9 +30,9 @@ MAIN = 			fractol.c
 
 INC_DIR = 		includes/
 
-HANDLERS = 		srcs/win_handler.c\
-				srcs/controls/mouse_handler.c\
-				srcs/controls/keys_handler.c\
+HANDLERS = 		srcs/handlers/win_handler.c\
+				srcs/handlers/mouse_handler.c\
+				srcs/handlers/keys_handler.c\
 
 RENDERS = 		srcs/fractals_tools.c\
 				srcs/choose_fractal.c\
