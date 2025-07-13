@@ -20,9 +20,8 @@ int get_color(int iterations, int max_iter)
 	int b;
 
 	if (iterations == max_iter)
-		return (0x000000);  // Noir simple pour le fond
+		return (0x000000);
 	
-	// Palette fixe simple et efficace
 	r = (iterations * 9) % 256;
 	g = (iterations * 15) % 256;
 	b = (iterations * 25) % 256;
