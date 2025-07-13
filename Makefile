@@ -39,8 +39,7 @@ RENDERS = 		srcs/fractals_tools.c\
 				srcs/render/mandelbrot.c\
 				srcs/render/julia.c
 
-COLORS =		srcs/colors/clr_initialization.c\
-				srcs/colors/clr_tools.c\
+COLORS =		srcs/colors/clr_tools.c\
 
 SECURE_ACTION = srcs/secure_action/safe_init.c\
 				srcs/secure_action/safe_win_opener.c\
@@ -90,15 +89,14 @@ $(OBJS_DIR)%.o: %.c
 -include $(OBJECT:.o=.d)
 
 # Create lib with ar rc
-${NAME}: check_sources ${LIBFT_DIR} ${MLX_DIR} ${OBJS}
+${NAME}: check_sources ${LIBFT_DIR}$(LIBFT_A) ${MLX_DIR}${MLX_A} ${OBJS}
 	@gcc ${CFLAGS} ${OBJS} -L$(LIBFT_DIR) -lft -L${MLX_DIR} -lmlx ${MLX_FLAGS} -o $(NAME) || { echo "$(ERROR_MSG)"; exit 1; }
 	@echo "$(GREEN)=============== All Fractol function has been compiled ===============$(RESET)"
 
 # Get libft``
-$(LIBFT_DIR):
+$(LIBFT_DIR)$(LIBFT_A): force
 	@printf "$(YELLOW)1/  Building libft...........................................\n$(RESET)"
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory || @printf "Issue while attempting compiling libft"
-	@cp $(LIBFT_DIR)$(LIBFT_H) $(INC_DIR) && cp $(LIBFT_DIR)ansi_format.h $(INC_DIR)
 
 # Get Mlx
 ${MLX_DIR}${MLX_A}:
