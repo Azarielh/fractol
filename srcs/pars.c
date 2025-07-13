@@ -21,13 +21,13 @@ void	pars_args(char **args, t_fractol *f)// second param for julia must be : (b 
 		if (!args[2])
 			exit_error("The set of Julia recquire an extra argument.\
 							Pleasse, read the instruction >> \n", 1);
-		if (ft_strcmp_2(args[2], "butterfly", "b") == 0)
+		else if (ft_strcmp_2(args[2], "butterfly", "b") == 0)
+			  f->set = ft_tolower_str(args[2]);
+		else if (ft_strcmp_2(args[2], "vortex", "v") == 0)
 			f->set = ft_tolower_str(args[2]);
-		else if (ft_strcmp_2(args[2], "vortex", "v"))
+		else if (ft_strcmp_2(args[2], "dragon de douady", "dd") == 0)
 			f->set = ft_tolower_str(args[2]);
-		else if (ft_strcmp_2(args[2], "dragon de douady", "dd"))
-			f->set = ft_tolower_str(args[2]);
-		else if (ft_strcmp_2(args[2], "lightning", "l"))
+		else if (ft_strcmp_2(args[2], "lightning", "l") == 0)
 			f->set = ft_tolower_str(args[2]);
 		else
 			exit_error("There is an arror with your arguments. Please, check\
@@ -35,8 +35,4 @@ void	pars_args(char **args, t_fractol *f)// second param for julia must be : (b 
 	}
 	else if (ft_strcmp_2(f->set, "mandelbrot", "m") != 0)
 		exit_error("Please, read the following instructions >> \n", 1);
-	if (!args[3])
-		f->theme = ft_strdup("winter");
-	else
-		f->theme = ft_strdup(args[3]);
 }

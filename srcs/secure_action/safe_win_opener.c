@@ -18,9 +18,6 @@ void	*safe_win_opener(t_fractol *f, char *title)
 	
 	win_ptr = mlx_new_window(f->mlx_ptr, f->width, f->height, title);
 	if (win_ptr == 0)
-	{
-		exit_error("Failed to open a new window", f, 2);
-		return (win_ptr);
-	}
+		exit_n_free("Failed to open a new window", f, 2);
 	return (win_ptr);
 }

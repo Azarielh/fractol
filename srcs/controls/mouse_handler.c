@@ -17,7 +17,8 @@ void	zoom_at_point(int scroll, int x, int y, t_fractol *f)
 	double	real;
 	double	imag;
 
-	pixel_to_complex(f, x, y, &real, &imag);
+	real = pixel_to_real(f, x);
+	imag = pixel_to_imag(f, y);
 	if (scroll == SCROLL_UP)
 	{
 		f->x_min = real - ((f->x_max - f->x_min) / 1.48) / 2.0;
@@ -41,7 +42,6 @@ void	zoom_at_point(int scroll, int x, int y, t_fractol *f)
 
 int	mouse_handler(int button, int x, int y, void *param)
 {
-	//ft_printf("%s","I am the mouse handler.\n");
 	if (button == SCROLL_UP || button == SCROLL_DOWN)
 		zoom_at_point(button, x, y, (t_fractol *)param);
 	return (0);

@@ -29,9 +29,6 @@ int	exit_n_free(char *msg, t_fractol *f, int exit_code)
 {
 	ft_putstr_fd("ERROR :  ", 2);
 	ft_putendl_fd(msg, 2);
-	if (exit_code == 1)
-		print_instructions();
-	else
-		clean_exit(f);
+	clean_exit(f);
 	exit(exit_code);
 }

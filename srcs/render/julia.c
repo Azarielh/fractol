@@ -44,7 +44,8 @@ void render_julia(t_fractol *f, double c_real, double c_imag)
         x = 0;
         while (x < f->width)
         {
-            pixel_to_complex(f, x, y, &real, &imag);
+            real = pixel_to_real(f, x);
+            imag = pixel_to_imag(f, y);
             iterations = julia_iteration(real, imag, c_real, c_imag, f->max_iter);
             color = get_color(iterations, f->max_iter, f);
             put_px_to_img(f, x, y, color);

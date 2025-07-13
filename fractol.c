@@ -14,9 +14,6 @@
 
 void init_fractol(t_fractol *f, char **args)
 {
-	ft_tolower_str(args[1]);
-	ft_printf("%s\n", args[1]);
-
 	pars_args(args, f);
 	f->width = 800;
 	f->height = 800;
@@ -25,9 +22,8 @@ void init_fractol(t_fractol *f, char **args)
 	f->y_min = -1.25;
 	f->y_max = 1.25;
 	f->max_iter = 100;
-	f->rm_color = 12345;
 	f->background_color = 0x000000;
-	f->mlx_ptr = safe_init(f);
+	f->mlx_ptr = safe_init();
 	f->win_ptr = safe_win_opener(f, "Fractol");
 	f->img_ptr = mlx_new_image(f->mlx_ptr, f->width, f->height);
 	f->img_data = mlx_get_data_addr(f->img_ptr, &f->bits, 
@@ -46,6 +42,7 @@ int main(int argc, char **args)
 	mlx_key_hook(f.win_ptr, keys_handler, &f);
 	mlx_mouse_hook(f.win_ptr, mouse_handler, &f);
 	mlx_hook(f.win_ptr, DestroyNotify, 0, close_window, &f);
+	mlx_hook(f.win_ptr, ConfigureNotify, 0, resize_handler, &f);
 
 	mlx_loop(f.mlx_ptr);
 	return (0);

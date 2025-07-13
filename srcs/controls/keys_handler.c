@@ -13,12 +13,8 @@
 #include "fractol.h"
 
 int keys_handler(int key, void *param)
-{
-	t_fractol *f = (t_fractol *)param;
-	
+{	
 	if (key == ESC)
 		close_window(param);
-	else if (key == SPACE)
-		switch_color(f);
 	return (0);
 }

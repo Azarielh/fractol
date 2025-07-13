@@ -18,7 +18,7 @@ int	ft_strcmp(const char *str1, const char *str2)
 	size_t	i;
 
 	i = -1;
-	while (((unsigned char *)str1)[++i] && ((unsigned char *)str2)[i])
+	while (str1[++i] && str2[i])
 		if (((unsigned char *)str1)[i] != ((unsigned char *)str2)[i])
 			return (((unsigned char *)str1)[i] - ((unsigned char *)str2)[i]);
 	return (((unsigned char *)str1)[i] - ((unsigned char *)str2)[i]);

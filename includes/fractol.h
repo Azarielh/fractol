@@ -15,13 +15,17 @@
 #define FRACTOL_H
 
 # include "../libft/libft.h"
-# include "controls.h"
 # include "mlx.h"
+
+# define ESC			65307
+# define SCROLL_UP		4
+# define SCROLL_DOWN	5
+# define DestroyNotify	17
+# define ConfigureNotify	22
 
 typedef struct s_fractol
 {
 	char			*set;
-	char			*theme;
 	void			*mlx_ptr;
 	void			*win_ptr;
 	void			*img_ptr;
@@ -35,7 +39,6 @@ typedef struct s_fractol
 	double			y_min;
 	double			y_max;
 	int				max_iter;
-	int				rm_color;
 	int				background_color;
 // Window's Dimension
 	int				width;
@@ -43,7 +46,7 @@ typedef struct s_fractol
 }					t_fractol;
 
 //____________________  SECURE FUNCTIONS  ____________________
-void				*safe_init(t_fractol *f);
+void				*safe_init();
 void				*safe_win_opener(t_fractol *f, char *title);
 void				clean_exit(t_fractol *f);
 
@@ -51,20 +54,15 @@ void				clean_exit(t_fractol *f);
 int					mouse_handler(int button, int x, int y, void *param);
 void				zoom_at_point(int scroll, int x, int y, t_fractol *f);
 int					keys_handler(int key, void *param);
-void				resize_handler(t_fractol *f);
+int					resize_handler(t_fractol *f);
 
 //____________________  UTILITY FUNCTIONS  ____________________
-void				pixel_to_complex(t_fractol *f, int x, int y, double *real, double *imag);
+double				pixel_to_real(t_fractol *f, int x);
+double				pixel_to_imag(t_fractol *f, int y);
 void				put_px_to_img(t_fractol *f, int x, int y, int color);
 
 //____________________  COLOR FUNCTIONS  ____________________
-int					*get_theme(char *theme);
 int					get_color(int iterations, int max_iter, t_fractol *f);
-void				init_themes(char *themes[4]);
-void				init_background(int clr[8]);
-void				init_color_palettes(int theme1[3], int theme2[3], int theme3[3], 
-											int theme4[3], int *init);
-void				switch_color(t_fractol *f);
 
 //____________________  FRACTAL FUNCTIONS  ____________________
 void				init_fractol(t_fractol *f, char **args);

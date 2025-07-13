@@ -18,7 +18,6 @@ void	runwhile_instruction(void)
 	ft_putendl_fd( "|   FRACTOL   |", 1);
 	ft_putendl_fd( "└─────────────┘", 1);
 	ft_putendl_fd( "Mouse wheel: Zoom in/out", 1);
-	ft_putendl_fd( "Space: Change colors", 1);
 	ft_putendl_fd( "ESC: Exit", 1);
 }
 
