@@ -45,6 +45,12 @@ typedef struct s_fractol
 	int				height;
 }					t_fractol;
 
+typedef struct s_julia
+{
+	double			z_real;
+	double			z_imag;
+}					t_julia;
+
 //____________________  SECURE FUNCTIONS  ____________________
 void				*safe_init();
 void				*safe_win_opener(t_fractol *f, char *title);

@@ -12,12 +12,6 @@
 
 #include "../../includes/fractol.h"
 
-typedef struct s_julia
-{
-	double	z_real;
-	double	z_imag;
-}	t_julia;
-
 static int julia_iteration(t_julia j, double c_real, double c_imag, t_fractol *f)
 {
 	double	temp;
