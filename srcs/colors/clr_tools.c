@@ -12,7 +12,7 @@
 
 #include "../../includes/fractol.h"
 
-int get_color(int iterations, int max_iter, t_fractol *f)
+int get_color(int iterations, int max_iter)
 {
 	int rgb;
 	int r;

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fractol.h"
+#include "fractol.h"
 
 void	zoom_at_point(int scroll, int x, int y, t_fractol *f)
 {

@@ -62,7 +62,7 @@ double				pixel_to_imag(t_fractol *f, int y);
 void				put_px_to_img(t_fractol *f, int x, int y, int color);
 
 //____________________  COLOR FUNCTIONS  ____________________
-int					get_color(int iterations, int max_iter, t_fractol *f);
+int					get_color(int iterations, int max_iter);
 
 //____________________  FRACTAL FUNCTIONS  ____________________
 void				init_fractol(t_fractol *f, char **args);

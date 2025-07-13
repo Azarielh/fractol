@@ -50,7 +50,7 @@ void render_mandelbrot(t_fractol *f)
             real = pixel_to_real(f, x);
             imag = pixel_to_imag(f, y);
             iterations = mandelbrot_iteration(real, imag, f->max_iter);
-            color = get_color(iterations, f->max_iter, f);
+            color = get_color(iterations, f->max_iter);
             put_px_to_img(f, x, y, color);
             x++;
         }
