@@ -14,10 +14,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_ls	*ft_lstmap(t_ls *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_lst;
-	t_list	*new_elem;
+	t_ls	*new_lst;
+	t_ls	*new_elem;
 	void	*to_apply;
 
 	if (!lst || !f || !del)

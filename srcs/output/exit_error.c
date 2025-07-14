@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fractol.h"
+#include "fractol.h"
 
 int	exit_error(char *msg, int exit_code)
 {
-	int fd;
+	int	fd;
 
 	fd = 1;
 	if (exit_code > 1)
@@ -25,6 +25,7 @@ int	exit_error(char *msg, int exit_code)
 		print_instructions();
 	exit(exit_code);
 }
+
 int	exit_n_free(char *msg, t_fractol *f, int exit_code)
 {
 	ft_putstr_fd("ERROR :  ", 2);

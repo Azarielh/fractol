@@ -23,7 +23,8 @@ int	ft_tolower(int c)
 
 char	*ft_tolower_str(char *str)
 {
-	int i;
+	int	i;
+
 	i = -1;
 	while (str[++i])
 	{

@@ -1,4 +1,3 @@
-.PHONY: all clean fclean re
 
 CFLAGS = -Wall -Wextra -Werror -MMD -MP
 NAME = libft.a
@@ -63,8 +62,6 @@ DIR_LIST = list/ft_lstnew.c\
 		list/ft_lstmap.c\
 		list/ft_lstsize.c
 
-DIR_GNL = gnl/get_next_line_bonus.c\
-		gnl/get_next_line_utils_bonus.c
 # Define the source files
 SRCS = $(DIR_BOOLEAN) $(DIR_FINDER) $(DIR_STR_MANIPULATION) $(DIR_STR_ANALYSIS) $(DIR_CONVERTION) $(DIR_MEMORY) $(DIR_OUTPUT) $(DIR_LIST) $(DIR_GNL)
 
@@ -75,15 +72,11 @@ ERROR_MSG = "$(RED)[ERROR] Compilation failed$(RESET)"
 OBJS_DIR = .objs/
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
+DEPS_DIR = .objs/
+DEPS = $(addprefix $(DEPS_DIR), $(SRCS:.c=.d))
+
+.PHONY: all clean fclean re
 all: $(NAME)
-# Check source files
-check_sources:
-	@for file in $(SRCS); do \
-		if [ ! -f $$file ]; then \
-			echo "$(RED)[ERROR] Le fichier $$file est manquant ou introuvable. Vérifiez que tous les fichiers source sont présents. $(RESET)"; \
-			exit 1; \
-		fi; \
-	done
 
 # Compile the object files
 $(OBJS_DIR)%.o: %.c
@@ -92,20 +85,21 @@ $(OBJS_DIR)%.o: %.c
 	@cc $(CFLAGS) -I . $< -c -o $@ && echo "$(GREEN)>>> SUCCESS $(RESET)" || { echo "$(ERROR_MSG)"; exit 1; }
 -include $(OBJECT:.o=.d)
 # Create lib with ar rc
-${NAME}: check_sources ${OBJS}
+${NAME}: ${OBJS}
 	@ar rc ${NAME} ${OBJS} || { echo "$(ERROR_MSG)"; exit 1; }
 	@echo "$(GREEN)======================= All libft function has been compiled =======================$(RESET)"
 
 # Clean it all up
 clean:
-	@rm -rf $(OBJS_DIR) && echo "$(YELLOW)======================= All object files has been removed =======================$(RESET)"
+	@rm -rf $(OBJS_DIR)
 
 fclean: clean
-	@rm -f  $(NAME) && echo "$(YELLOW)======================= $(NAME) has been removed =======================$(RESET)"
+	@rm -f  $(NAME)
 
 re: fclean all
 	@echo "$(GREEN)======================= $(NAME) has been recompiled =======================$(RESET)"
 
+-include $(DEPS)
 # ________________ Color codes ________________________
 
 RESET      = \033[0m

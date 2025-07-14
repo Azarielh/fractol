@@ -1,6 +1,6 @@
 # Compilation Settings
 CC =			cc
-CFLAGS =		-Wall -Wextra -Werror -MMD -MP -Wpedantic -I./libft -I./minilibx-linux
+CFLAGS =		-Wall -Wextra -Werror -MMD -MP -Wpedantic -I./libft -I./minilibx
 MLX_FLAGS =		-lmlx -lXext -lX11 -lm
 
 NAME =			fractol
@@ -8,17 +8,17 @@ NAME =			fractol
 # _____________________  SRCS  __________________________
 
 # libft dir
-LIBFT_DIR =		libft/
+LIBFT_DIR =		libft
 
 # libft files
-LIBFT_A =		libft.a
+LIBFT_A =		$(LIBFT_DIR)/libft.a
 LIBFT_H =		libft.h
 
 # MinilibX dir
-MLX_DIR =		minilibx-linux/
+MLX_DIR =		minilibx
 
 # MinilibX files
-MLX_A =			libmlx.a
+MLX_A =			$(MLX_DIR)/libmlx.a
 MLX_H =			mlx.h
 
 # FRACTOL file
@@ -43,6 +43,7 @@ COLORS =		srcs/colors/clr_tools.c\
 
 SECURE_ACTION = srcs/secure_action/safe_init.c\
 				srcs/secure_action/safe_win_opener.c\
+				srcs/secure_action/safe_new_img.c\
 				srcs/secure_action/clean_exit.c
 
 OUTPUT = 		srcs/output/exit_error.c\
@@ -57,6 +58,9 @@ SRCS = $(MAIN) $(OUTPUT) $(SECURE_ACTION) $(HANDLERS) $(RENDERS) $(COLORS) srcs/
 OBJS_DIR = .objs/
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
+DEPS_DIR = .objs/
+DEPS = $(addprefix $(DEPS_DIR), $(SRCS:.c=.d))
+
 # _____________________  SRCS  __________________________
 
 # Setting up an custom error message
@@ -64,7 +68,8 @@ COMPIL_ERROR = "$(RED)[ERROR] Compilation failed$(RESET)"
 MISSING_FILE = "est manquant ou introuvable. Vérifiez que tous les fichiers source sont présents.\n"
 
 .PHONY: all clean fclean re force
-all: print-banner check_sources $(NAME)
+all: print-banner check_sources $(MLX_DIR) $(LIBFT_DIR)
+	@$(MAKE) --no-print-directory $(NAME)
 
 # Print a banner
 print-banner:
@@ -81,6 +86,10 @@ check_sources:
 		fi; \
 	done
 
+.PHONY: $(MLX_DIR) $(LIBFT_DIR)
+$(MLX_DIR) $(LIBFT_DIR):
+	@$(MAKE) --no-print-directory -C $@
+
 # Compile the object files
 $(OBJS_DIR)%.o: %.c 
 	@mkdir -p $(dir $@)
@@ -89,31 +98,37 @@ $(OBJS_DIR)%.o: %.c
 -include $(OBJECT:.o=.d)
 
 # Create lib with ar rc
-${NAME}: check_sources ${LIBFT_DIR}$(LIBFT_A) ${MLX_DIR}${MLX_A} ${OBJS}
-	@gcc ${CFLAGS} ${OBJS} -L$(LIBFT_DIR) -lft -L${MLX_DIR} -lmlx ${MLX_FLAGS} -o $(NAME) || { echo "$(ERROR_MSG)"; exit 1; }
+$(NAME): $(OBJS) $(MLX_A) $(LIBFT_A)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) -L$(MLX_DIR) -lmlx -lm -lX11 -lXext -L$(LIBFT_DIR) -lft
 	@echo "$(GREEN)=============== All Fractol function has been compiled ===============$(RESET)"
 
-# Get libft``
-$(LIBFT_DIR)$(LIBFT_A): force
-	@printf "$(YELLOW)1/  Building libft...........................................\n$(RESET)"
-	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory || @printf "Issue while attempting compiling libft"
+# # Get libft``
+# $(LIBFT_DIR)$(LIBFT_A): force
+# 	@printf "$(YELLOW)1/  Building libft...........................................\n$(RESET)"
+# 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory || @printf "Issue while attempting compiling libft"
 
-# Get Mlx
-${MLX_DIR}${MLX_A}:
-	@printf "$(YELLOW)1/  Building MinilibX...........................................\n$(RESET)"
-	@$(MAKE) -C $(MLX_DIR) --no-print-directory || @printf "Issue while attempting compiling MiniLibX"
-
+# # Get Mlx
+# ${MLX_DIR}${MLX_A}: force
+# @[ -d minilibx ] || git clone https://github.com/42paris/minilibx-linux.git ${MLX_DIR} || echo -n "$(GREEN)MLX is already cloned. Keep going >>>$(RESET)"
+# 	@printf "$(YELLOW)1/  Building MinilibX...........................................\n$(RESET)"
+# 	@$(MAKE) -C $(MLX_DIR) --no-print-directory || @printf "Issue while attempting compiling MiniLibX"
+# 
 # Use to force libft to relink if something has changed within
 force:
 
 # Clean it all up
 clean:
+	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory clean
+	@$(MAKE) -C $(MLX_DIR) --no-print-directory clean
 	@rm -rf $(OBJS_DIR) && echo "$(YELLOW)=============== All object files has been removed ===============$(RESET)"
 
 fclean: clean
-	@rm -f  $(NAME) && echo "$(YELLOW)=============== $(NAME) has been removed ===============$(RESET)"
+	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory fclean
+	@rm -rf $(NAME) && echo "$(YELLOW)=============== $(NAME) has been removed ===============$(RESET)"
 
 re: fclean all
+
+-include $(DEPS)
 
 # ________________ Color codes ________________________
 

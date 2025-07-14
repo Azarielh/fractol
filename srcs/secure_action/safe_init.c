@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void	*safe_init()
+void	*safe_init(void)
 {
 	void	*init;
 

@@ -12,11 +12,11 @@
 
 #include "fractol.h"
 
-int get_color(int iterations, int max_iter)
+int	get_color(int iterations, int max_iter)
 {
-	int r;
-	int g;
-	int b;
+	int			r;
+	int			g;
+	int			b;
 	static int	alpha;
 
 	if (iterations == max_iter)
@@ -28,6 +28,5 @@ int get_color(int iterations, int max_iter)
 	r = iterations * (iterations * 0.8);
 	g = iterations * (iterations * 0.5);
 	b = iterations;
-	
 	return ((alpha << 24) | (r << 16) | (g << 8) | b);
 }

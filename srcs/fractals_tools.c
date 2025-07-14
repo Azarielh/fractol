@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "fractol.h"
 
 double	pixel_to_real(t_fractol *f, int x)
 {
@@ -22,11 +22,10 @@ double	pixel_to_imag(t_fractol *f, int y)
 	return (f->y_min + (double)y * (f->y_max - f->y_min) / f->height);
 }
 
-void put_px_to_img(t_fractol *f, int x, int y, int color)
+void	put_px_to_img(t_fractol *f, int x, int y, int color)
 {
-	int offset;
+	int	offset;
 
-	offset =  (y * f->line_len + x * (f->bits / 8));
+	offset = (y * f->line_len + x * (f->bits / 8));
 	*(unsigned int *)(f->img_data + offset) = color;
 }
-

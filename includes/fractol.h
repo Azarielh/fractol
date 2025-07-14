@@ -12,7 +12,7 @@
 
 #ifndef FRACTOL_H
 
-#define FRACTOL_H
+# define FRACTOL_H
 
 # include "../libft/libft.h"
 # include "mlx.h"
@@ -21,8 +21,8 @@
 # define SPACE				32
 # define SCROLL_UP			4
 # define SCROLL_DOWN		5
-# define DestroyNotify		17
-# define ConfigureNotify	22
+# define DESTROYNOTIFY		17
+# define CONFIGURENOTIFY	22
 
 typedef struct s_fractol
 {
@@ -46,6 +46,14 @@ typedef struct s_fractol
 	int				height;
 }					t_fractol;
 
+typedef struct s_zoom_data
+{
+	double			x_min;
+	double			x_max;
+	double			y_min;
+	double			y_max;
+}					t_zoom_data;
+
 typedef struct s_draw
 {
 	double			z_real;
@@ -55,8 +63,9 @@ typedef struct s_draw
 }					t_draw;
 
 //____________________  SECURE FUNCTIONS  ____________________
-void				*safe_init();
+void				*safe_init(void);
 void				*safe_win_opener(t_fractol *f, char *title);
+void				*safe_new_img(t_fractol *f);
 void				clean_exit(t_fractol *f);
 
 //____________________  CONTROLS FUNCTIONS  ____________________
@@ -84,7 +93,7 @@ void				print_instructions(void);
 void				runwhile_instruction(void);
 int					exit_error(char *msg, int exit_code);
 int					exit_n_free(char *msg, t_fractol *f, int exit_code);
-void					pars_args(char **args, t_fractol *f);
+void				pars_args(char **args, t_fractol *f);
 
 //____________________  WINDOW FUNCTIONS  ____________________
 int					close_window(t_fractol *f);

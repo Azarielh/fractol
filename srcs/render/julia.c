@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-static int julia_iteration(t_draw d, t_fractol *f)
+static int	julia_iteration(t_draw d, t_fractol *f)
 {
 	double	temp;
 	int		i;
@@ -29,12 +29,12 @@ static int julia_iteration(t_draw d, t_fractol *f)
 	return (get_color(i, f->max_iter));
 }
 
-void render_julia(t_fractol *f, t_draw *d)
+void	render_julia(t_fractol *f, t_draw *d)
 {
 	int		x;
 	int		y;
 	int		color;
-	
+
 	y = 0;
 	while (y < f->height)
 	{

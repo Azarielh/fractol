@@ -6,11 +6,11 @@
 /*   By: jlacaze <jlacaze-@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:18:51 by jlacaze           #+#    #+#             */
-/*   Updated: 2025/07/08 18:18:51 by jlacaze          ###   ########.fr       */
+/*   Updated: 2025/07/14 10:28:01 by jlacaze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fractol.h"
+#include "fractol.h"
 
 int	close_window(t_fractol *f)
 {
@@ -33,7 +33,8 @@ int	resize_handler(t_fractol *f)
 	f->width = 1024;
 	f->height = 768;
 	f->img_ptr = mlx_new_image(f->mlx_ptr, f->width, f->height);
-	f->img_data = mlx_get_data_addr(f->img_ptr, &f->bits, &f->line_len, &f->endian);
+	f->img_data = mlx_get_data_addr(f->img_ptr, &f->bits, &f->line_len,
+			&f->endian);
 	choose_fractal(f);
 	return (0);
 }

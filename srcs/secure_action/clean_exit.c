@@ -6,11 +6,11 @@
 /*   By: jlacaze <jlacaze-@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 00:21:56 by jlacaze           #+#    #+#             */
-/*   Updated: 2025/07/12 00:21:56 by jlacaze          ###   ########.fr       */
+/*   Updated: 2025/07/14 10:33:20 by jlacaze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fractol.h"
+#include "fractol.h"
 
 void	clean_exit(t_fractol *f)
 {

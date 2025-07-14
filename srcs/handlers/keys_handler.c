@@ -6,7 +6,7 @@
 /*   By: jlacaze <jlacaze-@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 19:23:27 by jlacaze           #+#    #+#             */
-/*   Updated: 2025/07/08 19:23:27 by jlacaze          ###   ########.fr       */
+/*   Updated: 2025/07/14 10:11:09 by jlacaze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	switch_model(t_fractol *f)
 	choose_fractal(f);
 }
 
-int keys_handler(int key, void *param)
-{	
+int	keys_handler(int key, void *param)
+{
 	if (key == ESC)
 		close_window(param);
 	if (key == SPACE)
