@@ -22,12 +22,12 @@ int get_color(int iterations, int max_iter)
 	if (iterations == max_iter)
 	{
 		alpha = 255;
-		return ((alpha << 24) | (150 << 16) | (3 << 8) | 255);
+		return ((alpha << 24) | (80 << 16) | (140 << 8) | 125);
 	}
-	alpha -= 20;
-	r = (iterations * 2);
-	g = (iterations * 1);
-	b = (iterations * 40);
+	alpha -= 5;
+	r = iterations * (iterations * 0.8);
+	g = iterations * (iterations * 0.5);
+	b = iterations;
 	
 	return ((alpha << 24) | (r << 16) | (g << 8) | b);
 }

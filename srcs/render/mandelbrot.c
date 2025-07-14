@@ -33,11 +33,9 @@ static int	mandelbrot_iteration(double c_real, double c_imag, int max_iter)
 	return (get_color(i, max_iter));
 }
 
-void render_mandelbrot(t_fractol *f)
+void render_mandelbrot(t_fractol *f, t_draw *d)
 {
 	int x, y;
-	double real;
-	double imag;
 	int color;
 
 	y = 0;
@@ -46,9 +44,9 @@ void render_mandelbrot(t_fractol *f)
 		x = 0;
 		while (x < f->width)
 		{
-			real = pixel_to_real(f, x);
-			imag = pixel_to_imag(f, y);
-			color = mandelbrot_iteration(real, imag, f->max_iter);
+			d->c_real = pixel_to_real(f, x);
+			d->c_imag = pixel_to_imag(f, y);
+			color = mandelbrot_iteration(d->c_real, d->c_imag, f->max_iter);
 			put_px_to_img(f, x, y, color);
 			x++;
 		}

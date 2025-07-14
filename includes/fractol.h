@@ -17,11 +17,11 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 
-# define ESC			65307
-# define SPACE			32
-# define SCROLL_UP		4
-# define SCROLL_DOWN	5
-# define DestroyNotify	17
+# define ESC				65307
+# define SPACE				32
+# define SCROLL_UP			4
+# define SCROLL_DOWN		5
+# define DestroyNotify		17
 # define ConfigureNotify	22
 
 typedef struct s_fractol
@@ -76,8 +76,8 @@ int					get_color(int iterations, int max_iter);
 //____________________  FRACTAL FUNCTIONS  ____________________
 void				init_fractol(t_fractol *f, char **args);
 void				choose_fractal(t_fractol *f);
-void				render_mandelbrot(t_fractol *f);
-void				render_julia(t_fractol *f, double c_real, double c_imag);
+void				render_mandelbrot(t_fractol *f, t_draw *d);
+void				render_julia(t_fractol *f, t_draw *d);
 
 //____________________  OUTPUT FUNCTIONS  ____________________
 void				print_instructions(void);

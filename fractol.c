@@ -22,7 +22,6 @@ void init_fractol(t_fractol *f, char **args)
 	f->y_min = -1.25;
 	f->y_max = 1.25;
 	f->max_iter = 100;
-	f->background_color = 0x000000;
 	f->mlx_ptr = safe_init();
 	f->win_ptr = safe_win_opener(f, "Fractol");
 	f->img_ptr = mlx_new_image(f->mlx_ptr, f->width, f->height);
